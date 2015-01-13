@@ -13,6 +13,10 @@ logger = require 'winston'
 
 if settings.server.redis_socket?
     redis = require('redis').createClient(settings.server.redis_socket)
+else if process.env.REDISTOGO_URL
+    rtg = require('url').parse(process.env.REDISTOGO_URL)
+    redis = require('redis').createClient(rtg.port, rtg.hostname)
+    redis.auth(rtg.auth.split(":")[1])
 else if settings.server.redis_port? or settings.server.redis_host?
     redis = require('redis').createClient(settings.server.redis_port, settings.server.redis_host)
 
