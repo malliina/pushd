@@ -73,7 +73,7 @@ exports['mpns-toast'] =
     class: require('./lib/pushservices/mpns').PushServiceMPNS
     type: 'toast'
     # Used for WP7.5+ to handle deep linking
-    paramTemplate: '/Page.xaml?object=${data.object_id}'
+#    paramTemplate: '/Page.xaml?object=${data.object_id}'
 
 exports['mpns-tile'] =
     enabled: yes
